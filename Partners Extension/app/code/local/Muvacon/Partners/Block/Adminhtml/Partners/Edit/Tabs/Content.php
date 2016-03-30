@@ -4,7 +4,7 @@ class Muvacon_Partners_Block_Adminhtml_Partners_Edit_Tabs_Content extends Mage_A
     public function __construct()
     {
 		parent::__construct();
-		$this->setTemplate('Partners/gallery.phtml');
+		$this->setTemplate('Partners/partners.phtml');
     }
 	public function getImageTypes()
     {
