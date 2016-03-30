@@ -1,0 +1,38 @@
+<?php
+$partners_image = Mage::registry('partners_image');
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('muvacon_partners')->__('Upload Slider Images'); ?></h4>
+        <div class="form-buttons"></div>
+    </div>
+    <div class="fieldset ">
+        <table  class="form-list">
+            <tbody>
+                <tr>
+                    <td class=""><label class="padding" for="slider_images">Upload Slider Images</label></td>
+                    <td class="value" colspan="8">
+                        <input id="slider_images" name="slider_images[]" accept="image/*" value="" class="input-file" multiple type="file">
+                    </td>
+                </tr>
+                <?php if (!empty($partners_image) && count($partners_image) > 0) { ?>
+                    <tr>
+						<td class="relative-partners">
+                        <?php foreach ($partners_image as $modelKey => $modelValue) {
+								$url = Mage::helper("adminhtml")->getUrl("proadmin/partners/deleteImage/delId/".$modelValue->getImageId());
+							?>
+                        
+							<div id="image-<?php echo $modelValue->getImageId(); ?>">
+                                <span class="remove-slider" data-url="<?php echo $url; ?>" data-slide="<?php echo $modelValue->getImageId(); ?>">X</span>
+                                <img src="<?php echo Mage::getBaseUrl('media') . 'Muvacon/Partners/Sliders/' . $modelValue->getFkCompanyId() . '/' . $modelValue->getImageName(); ?>" alt="<?php echo $modelValue->getImageName(); ?>" width="100" />
+							</div>
+                        
+                        <?php } ?>
+						</td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <events_index_index>
+        <reference name="head">
+			<action method="addCss"><stylesheeet>css/Muvacon/Events/events.css</stylesheeet></action>
+			<action method="addCss"><stylesheeet>css/Muvacon/Events/jquery.fancybox.css</stylesheeet></action>
+            <action method="addJs"><script>Muvacon/Events/jquery.min.js</script></action>
+            <action method="addJs"><script>Muvacon/Events/owl.carousel.min.js</script></action>
+            <action method="addJs"><script>Muvacon/Events/jquery.fancybox.pack.js</script></action>
+			<action method="addJs"><script>Muvacon/Events/events.js</script></action>
+        </reference>
+     </events_index_index>
+</layout>

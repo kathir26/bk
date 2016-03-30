@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <!-- <adminhtml_partners_list>
+        <reference name="content">
+            <block type="partners/adminhtml_partners" name="partners"></block>
+        </reference>
+    </adminhtml_partners_list>
+Below are the necessary JS files for the WYSIWYG editor  -->
+	<adminhtml_partners_edit>
+		<update handle="editor"/>
+		<reference name="head">
+			 <action method="setCanLoadTinyMce"><load>1</load></action>
+		</reference>
+        <reference name="head">
+			<action method="addCss">
+				<stylesheeet>css/Muvacon/Partners/partners.css</stylesheeet>
+			</action>
+			<action method="addJs">
+				<script>Muvacon/Partners/jquery.min.js</script>
+			</action>
+			<action method="addJs">
+				<script>Muvacon/Partners/partners.js</script>
+			</action>
+        </reference>
+    </adminhtml_partners_edit>
+	<adminhtml_partners_add>
+		<update handle="editor"/>
+		<reference name="head">
+			 <action method="setCanLoadTinyMce"><load>1</load></action>
+		</reference>
+        <reference name="head">
+			<action method="addCss">
+				<stylesheeet>css/Muvacon/Partners/partners.css</stylesheeet>
+			</action>
+			<action method="addJs">
+				<script>Muvacon/Partners/jquery.min.js</script>
+			</action>
+			<action method="addJs">
+				<script>Muvacon/Partners/partners.js</script>
+			</action>
+        </reference>
+    </adminhtml_partners_add>
+</layout>

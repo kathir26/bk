@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Muvacon_Partners>
+        <active>true</active>
+        <codePool>local</codePool>
+        </Muvacon_Partners>
+    </modules>
+</config>

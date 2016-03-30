@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <!-- Below are the necessary JS files for the WYSIWYG editor  -->
+	<adminhtml_testimonials_edit>
+		<update handle="editor"/>
+		<reference name="head">
+			 <action method="setCanLoadTinyMce"><load>1</load></action>
+		</reference>
+    </adminhtml_testimonials_edit>
+	<adminhtml_testimonials_add>
+		<update handle="editor"/>
+		<reference name="head">
+			 <action method="setCanLoadTinyMce"><load>1</load></action>
+		</reference>
+    </adminhtml_testimonials_add>
+</layout>

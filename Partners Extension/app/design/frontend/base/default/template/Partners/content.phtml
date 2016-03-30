@@ -1,0 +1,62 @@
+<?php 
+	$partnersCollection 	= Mage::registry('partners_collection');
+	$partnersImgCollection 	= Mage::registry('partners_img_collection');
+	$partnerscId		 	= Mage::registry('partners_cId');
+?>
+<div class="carousel-logo">
+	<div class="brandlogo owl-carousel">
+<?php if (!empty($partnersCollection) && count($partnersCollection) > 0) { $ek = 0; ?>
+	<?php foreach ($partnersCollection as $modelKey => $modelValue) {
+			$imagePath	= 'media/' . $modelValue->getCompanyLogo();
+			if(file_exists($imagePath)) {
+	?>
+				<div class="owl-item-single " id="logoPart<?php echo str_replace(array(".", " "), "", $modelValue->getCompanyName()); ?>" data-index="<?php echo $ek;?>" data-slide="<?php echo $modelValue->getPartnersId(); ?>">
+					<img src="<?php echo Mage::getBaseUrl('media') . $modelValue->getCompanyLogo();?>" alt="<?php echo $modelValue->getCompanyName(); ?>" />
+				</div>	
+	<?php $ek++;} } ?>
+<?php } ?>
+	</div>
+	<?php if (!empty($partnersCollection) && count($partnersCollection) > 0) { $el =0; ?>
+	<?php foreach ($partnersCollection as $modelKey => $modelValue) { 
+			$imagePath	= 'media/' . $modelValue->getCompanyLogo();
+			if(file_exists($imagePath)) {?>
+			<div id="company-div-<?php echo $modelValue->getPartnersId(); ?>" class="hide_all <?php echo ($el == 0)? 'show': 'hide';?> detail-carousel">
+				<div class="title"><h1><?php echo $modelValue->getCompanyName(); ?></h1></div>
+				<div class="clearfix desc">				
+				<?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($modelValue->getCompanyDescription());?>
+				</div>
+				<div class="slider-carousel<?php echo $el; ?>">
+				<?php if (!empty($partnersImgCollection[$modelValue->getPartnersId()]) && count($partnersImgCollection[$modelValue->getPartnersId()]) > 0) { ?>
+				<?php foreach ($partnersImgCollection[$modelValue->getPartnersId()] as $modelImgKey => $modelImgValue) {
+						$imagePath		= Mage::getBaseUrl('media') .'/Muvacon/Partners/Sliders/' . $modelImgValue->getFkCompanyId() . '/' . $modelImgValue->getImageName();
+						$mediaDir		= Mage::getBaseDir('media') . '/Muvacon/Partners/Sliders/';
+						$cacheDir 		= $mediaDir.'cache'.DS;
+						$mediaFile		= $mediaDir.$modelImgValue->getFkCompanyId() . '/' . $modelImgValue->getImageName();
+						if(file_exists($mediaFile)) {
+							$cacheUrl 	= Mage::getUrl('media').'Muvacon'.DS.'Partners'.DS.'Sliders'.DS.'cache'.DS;
+							$image 		= new Varien_Image($mediaFile);
+							$image->keepFrame(false);
+							$image->resize(277, 190);
+							$image->save($cacheDir.$modelImgValue->getFkCompanyId() . '/' . $modelImgValue->getImageName());
+							$partnerImageUrl = $cacheUrl.$modelImgValue->getFkCompanyId() . '/' . $modelImgValue->getImageName();
+				?>
+					<div class="owl-item-single">
+						<a class="fancybox" rel="gallery<?php echo $modelImgValue->getFkCompanyId(); ?>" href="<?php echo $imagePath; ?>">
+							<img src="<?php echo $partnerImageUrl;?>" alt="<?php echo $modelImgValue->getImageName(); ?>" />
+						</a>
+					</div>
+				<?php } } ?>
+			<?php } ?>
+				</div>
+			</div>
+	<?php $el++;} } ?>
+<?php } ?>
+</div>
+<?php if($partnerscId != '') { ?>
+<script>
+jQuery(document).ready(function(){
+	jQuery('#logoPart<?php echo $partnerscId; ?>').click();
+	jQuery('#logoPart<?php echo $partnerscId; ?>').addClass('logoact');
+});
+</script>
+<?php } ?>

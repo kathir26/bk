@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <partners_index_index>
+        <reference name="head">
+			<action method="addCss"><stylesheeet>css/Muvacon/Partners/partners.css</stylesheeet></action>
+			<action method="addCss"><stylesheeet>css/Muvacon/Partners/jquery.fancybox.css</stylesheeet></action>
+            <action method="addJs"><script>Muvacon/Partners/jquery.min.js</script></action>
+            <action method="addJs"><script>Muvacon/Partners/owl.carousel.min.js</script></action>
+            <action method="addJs"><script>Muvacon/Partners/jquery.fancybox.pack.js</script></action>
+			<action method="addJs"><script>Muvacon/Partners/partners.js</script></action>
+        </reference>
+     </partners_index_index>
+</layout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <events module="muvacon_events" translate="title">
+            <title>Events</title>
+            <sort_order>40</sort_order>
+            <children>
+				<list module="muvacon_events" translate="title">
+                    <title>List Events</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/events/list</action>
+                </list>
+                <add module="muvacon_events" translate="title">
+                    <title>Add Events</title>
+                    <sort_order>2</sort_order>
+                    <action>adminhtml/events/add</action>
+                </add>
+            </children>
+        </events>
+    </menu>
+	<layout>
+		<updates>
+			<events>
+				<file>events.xml</file>
+			</events>
+		</updates>
+	</layout>
+    <acl>
+        <resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+            <admin>
+                <children>
+                    <custom translate="title" module="muvacon_events">
+                        <title>Event Controller</title>
+                        <sort_order>-100</sort_order>
+                        <children>
+							<list translate="title">
+                                <title>List Events</title>
+                                <sort_order>1</sort_order>
+                            </list>
+                            <add translate="title">
+                                <title>Add Events</title>
+                                <sort_order>2</sort_order>
+                            </add>
+                        </children>
+                    </custom>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

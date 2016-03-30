@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Muvacon_Recaptcha>
+			<version>1.0</version>
+			<depends>
+				<Mage_Contacts/>
+			</depends>
+		</Muvacon_Recaptcha>
+	</modules>
+
+    <global>
+        <models>
+            <recaptcha>
+                <class>Muvacon_Recaptcha_Model</class>
+            </recaptcha>
+        </models>
+		<helpers>
+            <recaptcha>
+                <class>Muvacon_Recaptcha_Helper</class>
+            </recaptcha>
+        </helpers>
+    </global>
+
+	<frontend>
+		<routers>
+            <contacts>
+                <args>
+                    <modules>
+                        <recaptcha before="Mage_Contacts">Muvacon_Recaptcha</recaptcha>
+                    </modules>
+                </args>
+            </contacts>
+        </routers>
+        <translate>                                                                                                                                   
+            <modules>                                                                                                                                 
+                <recaptcha>                                                                                                                 
+                    <files>                                                                                                                           
+                        <default>Muvacon_Recaptcha.csv</default>                                                                                    
+                    </files>                                                                                                                          
+                </recaptcha>                                                                                                                
+            </modules>                                                                                                                                
+        </translate>
+        <layout>
+            <updates>
+                <recaptcha module="recaptcha">
+                    <file>Recaptcha.xml</file>
+                </recaptcha>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <adminhtml>
+        <translate>                                                                                                                                   
+            <modules>                                                                                                                                 
+                <recaptcha>                                                                                                                 
+                    <files>                                                                                                                           
+                        <default>Muvacon_Recaptcha.csv</default>                                                                                    
+                    </files>                                                                                                                          
+                </recaptcha>                                                                                                                
+            </modules>                                                                                                                                
+        </translate>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<recaptcha>
+											<title>Recaptcha Options</title>
+										</recaptcha>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+</config>

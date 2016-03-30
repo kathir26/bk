@@ -1,0 +1,36 @@
+<div class="">
+  <?php
+   $total = Mage::getModel('checkout/cart')->getQuote()->getGrandTotal(); 
+   if((integer)$total > 0)
+   {
+  ?>
+            <?php
+      $cart = Mage::getModel('checkout/cart')->getQuote();
+	  $_helper = $this->helper('catalog/output');
+      ?>
+    <div class="scroll-cart"><ul role="menu" aria-labelledby="dLabel">
+       <?php
+       foreach ($cart->getAllItems() as $item) {
+        $productName = $item->getProduct()->getName();
+        $productPrice = $item->getProduct()->getPrice();
+        $productQty = $item->getQty();
+        $productUrl = $item->getProduct()->getProductUrl();
+       ?>
+       <li>
+           <a href="<?php echo $productUrl; ?>" class="clearfix">
+				<img src="<?php echo $this->helper('catalog/image')->init($item->getProduct(), 'small_image')->resize(100,100);?>" alt="<?php echo $productName;?>" />
+				<?php echo $productName; ?><br>
+                                <p>Anzahl: <strong><?php echo $productQty; ?></strong></p>
+		   <!-- <span><?php //echo Mage_Catalog_Block_Product::getPriceHtml($item->getProduct(), true); ?></span>-->
+			</a>
+		</li>
+       <?php
+       }
+       ?>
+    </ul></div>
+    <span class="total">Total: CHF <?php echo number_format($total, 2, '.', ''); ?></span>
+	<div class="button-grp clearfix">
+	<button type="button" title="Zur Kasse" class="btn btn-default" onclick="setLocation('<?php echo $this->getUrl() ?>/onestepcheckout/')">Zur Kasse</button></div>
+   <?php
+   } else { echo 'Ihr Warenkorb ist noch leer'; } ?>
+        </div>

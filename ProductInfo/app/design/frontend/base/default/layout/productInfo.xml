@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout>
+    <catalog_product_view>         
+		<reference name="product.info">
+			<block type="catalog/product_view_attributes" name="product.productInfo" as="productInfo" template="productInfo/product_info_form.phtml">
+				<action method="addToParentGroup"><group>detailed_info</group></action>
+				<action method="setTitle" translate="value"><value>Product Info</value></action>
+			</block>
+		</reference>
+    </catalog_product_view>
+</layout>

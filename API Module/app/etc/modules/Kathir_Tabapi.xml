@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Kathir_Tabapi>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Kathir_Tabapi>
+    </modules>
+</config> 

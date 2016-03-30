@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <tabapi translate="title" module="tabapi">
+                <model>tabapi/Api</model>
+                 <title>Custom API </title>
+                <methods>
+                   <listapi translate="title" module="tabapi">
+                        <title>Kathir API</title>
+                        <method>listapi</method>
+                   </listapi>
+                </methods>
+                <faults module="tabapi">
+                    <data_invalid>
+                        <code>100</code>
+                        <message>Invalid data</message>
+                    </data_invalid>
+                </faults>
+            </tabapi>
+          </resources>
+      </api>
+</config>

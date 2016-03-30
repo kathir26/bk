@@ -1,0 +1,31 @@
+<?php 
+	$eventsCollection 	= Mage::registry('events_collection');
+	$eventsImgCollection 	= Mage::registry('events_img_collection');
+	$eventscId		 	= Mage::registry('events_cId');
+?>
+<div class="carousel-logo">
+	<div class="brandlogo owl-carousel">
+<?php if (!empty($eventsCollection) && count($eventsCollection) > 0) { $ek = 0; ?>
+	<?php foreach ($eventsCollection as $modelKey => $modelValue) {
+			$imagePath	= 'media/' . $modelValue->getEventImage();
+			if(file_exists($imagePath)) {
+	?>
+				<div class="owl-item-single " id="logoPart<?php echo str_replace(array(".", " "), "", $modelValue->getEventName()); ?>" data-index="<?php echo $ek;?>" data-slide="<?php echo $modelValue->getEventId(); ?>">
+					<img src="<?php echo Mage::getBaseUrl('media') . $modelValue->getEventImage();?>" alt="<?php echo $modelValue->getEventName(); ?>" />
+				</div>	
+	<?php $ek++;} } ?>
+<?php } ?>
+	</div>
+	<?php if (!empty($eventsCollection) && count($eventsCollection) > 0) { $el =0; ?>
+	<?php foreach ($eventsCollection as $modelKey => $modelValue) { 
+			$imagePath	= 'media/' . $modelValue->getEventImage();
+			if(file_exists($imagePath)) {?>
+			<div id="company-div-<?php echo $modelValue->getEventId(); ?>" class="hide_all <?php echo ($el == 0)? 'show': 'hide';?> detail-carousel">
+				<div class="title"><h1><?php echo $modelValue->getEventName(); ?></h1></div>
+				<div class="clearfix desc">				
+				<?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($modelValue->getEventDescription());?>
+				</div>
+			</div>
+	<?php $el++;} } ?>
+<?php } ?>
+</div>

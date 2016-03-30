@@ -1,0 +1,53 @@
+<?php
+if(isset($_GET['action']) && $_GET['action'] == 'search')
+{
+	$searchTxt = strtolower(trim(addslashes($_GET['key'])));
+	$productCollection = Mage::getSingleton('catalog/product')->getCollection()
+								->addAttributeToFilter('status', array('eq'=>'1'))	
+								->addAttributeToFilter('name', 
+										array(
+											array('like' => '%'.$searchTxt.'%')
+										)
+								  );
+}
+$counter = 0;
+$collection = Mage::getModel('catalog/category')->getCollection();
+$catIds		= array(257, 276, 318, 273, 326);
+$_category  = $collection->addAttributeToSelect('*')
+				->addAttributeToFilter('entity_id', array('nin' => $catIds))
+				->addAttributeToFilter('parent_id', array('nin' => $catIds))
+				->addAttributeToFilter('name', array(
+					'like' => '%'.$searchTxt.'%'
+				));
+		foreach($_category as $index => $category){
+			if ($category->getIsActive()) {
+				$products_count = Mage::getModel('catalog/category')->load($category->getId())->getProductCount();
+				if($products_count > 0) {
+					$parent_category_name = $category->getParentCategory()->getName();
+					if($parent_category_name == 'Default Category') { $parent_category_name = '';}?>
+					<li class="<?php echo (++$counter)%2?'odd ':'even '. $row_class; ?> cat-top-se">
+						<a href="<?php echo $category->getUrl($category); ?>"><span class="cat_left"><?php echo $category->getName(); ?></span> <span class="small-cat"><?php echo $parent_category_name; ?></span><span class="cat_right">(<?php echo $products_count; ?>)</span></a>
+					</li>
+	<?php 		}
+			}
+		}
+//$collection = Mage::getModel('catalog/category')->getCategories($_category->entity_id);
+//$helper     = Mage::helper('catalog/category');
+
+$count	 = count($productCollection);
+?>
+<?php foreach($productCollection as $index => $product){
+		if ($index == 0) {
+			$row_class = ' first';
+		}
+		if ($index == $count) {
+			$row_class = ' last';
+		}?>
+	<?php $___product = Mage::getModel('catalog/product')->load($product->getEntityId()) ?>
+	<?php if(strstr(strtolower($___product->getName()), $searchTxt)){ ?>
+		<li class="<?php echo (++$counter)%2?'odd ':'even '. $row_class; ?>">
+			<a href="<?php echo $___product->getProductUrl(); ?>"><img src="<?php echo $this->helper('catalog/image')->init($___product, 'small_image')->resize(50,50) ?>" alt="<?php echo $this->escapeHtml($___product->getName()) ?>" />
+                            <span class="auto-span"><?php echo $___product->getName(); ?></span></a>
+		</li>
+	<?php } ?>
+<?php } ?>

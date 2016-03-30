@@ -1,0 +1,49 @@
+<?php 
+	$_product 		= $this->getProduct();
+	$productId		= $_product->getId();
+	$storeId 		= Mage::app()->getStore()->getStoreId();	
+?>
+<form action="<?php echo $this->getUrl('productInfo/index/', array('_query' => 'id=' . $productId)) ?>" id="productinfo_form" name="productinfo_form" method="post">
+    <div class="fieldset">
+        <h2 class="legend">Product Additional Information</h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="firstname" class="required"><em>*</em>First Name</label>
+                    <div class="input-box">
+                        <input name="firstname" id="firstname" title="First Name" value="" class="input-text required-entry" type="text">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="lastname" class="required"><em>*</em>Last Name</label>
+                    <div class="input-box">
+                        <input name="lastname" id="lastname" title="Last Name" value="" class="input-text required-entry" type="text">
+                    </div>
+                </div>
+            </li>
+            <li>
+				<div class="field">
+					<label for="mobile" class="required">Mobile No.</label>
+					<div class="input-box">
+						<input name="mobile" id="mobile" title="Mobile No." value="" class="input-text required-entry" type="text">
+					</div>
+				</div>
+				<div class="field">
+					<label for="location" class="required">Location</label>
+					<div class="input-box">
+						<input name="location" id="location" title="Location" value="" class="input-text required-entry" type="text">
+					</div>
+				</div>
+            </li>
+		</ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required">* Required Fields</p>
+        <button type="submit" title="Submit" class="button"><span><span>Submit</span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+    //< ![CDATA[
+        var productInfoForm = new VarienForm('productinfo_form');
+    //]]>
+</script>

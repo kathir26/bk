@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <productInfo module="kathir_productInfo" translate="title">
+            <title>Product Info</title>
+            <sort_order>100</sort_order>
+            <children>
+				<list module="kathir_productInfo" translate="title">
+                    <title>List Product Info</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/productInfo/list</action>
+                </list>
+            </children>
+        </productInfo>
+    </menu>
+	<layout>
+		<updates>
+			<productInfo>
+				<file>productInfo.xml</file>
+			</productInfo>
+		</updates>
+	</layout>
+    <acl>
+        <resources>
+			<all>
+				<title>Allow Everything</title>
+			</all>
+            <admin>
+                <children>
+                    <custom translate="title" module="kathir_productInfo">
+                        <title>ProductInfo Controller</title>
+                        <sort_order>-100</sort_order>
+                        <children>
+							<list translate="title">
+                                <title>List Product Info</title>
+                                <sort_order>1</sort_order>
+                            </list>
+                        </children>
+                    </custom>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

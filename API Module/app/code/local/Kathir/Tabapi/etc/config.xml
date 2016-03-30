@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Kathir_Tabapi>
+            <version>0.1.0</version>
+         </Kathir_Tabapi>
+    </modules>
+   <global>
+        <models>
+            <tabapi>
+                <class>Kathir_Tabapi_Model</class>
+            </tabapi>
+        </models>
+        <helpers>
+            <tabapi>
+                <class>Kathir_Tabapi_Helper</class>
+            </tabapi>
+        </helpers>
+    </global>
+</config>

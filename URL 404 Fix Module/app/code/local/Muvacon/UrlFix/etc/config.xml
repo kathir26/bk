@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Muvacon_UrlFix>
+            <version>1.0</version>
+        </Muvacon_UrlFix>
+    </modules>
+    <global>
+		<cache>
+            <backend>Zend_Cache_Backend_BlackHole</backend>
+        </cache>
+        <helpers>
+            <muvacon_urlfix>
+                <class>Muvacon_UrlFix_Helper</class>
+            </muvacon_urlfix>
+        </helpers>
+    </global>
+	<frontend>
+		<routers>
+			<cms>
+				<args>
+					<modules>
+						<muvacon_urlfix before="Mage_Cms">Muvacon_UrlFix</muvacon_urlfix>
+					</modules>
+				</args>
+			</cms>
+		</routers>
+	</frontend>
+</config>

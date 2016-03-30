@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Muvacon_UrlFix>
+			<active>true</active>
+			<codePool>local</codePool>
+			<depends>
+				<Mage_Cms/>
+			</depends>
+        </Muvacon_UrlFix>
+    </modules>
+</config>
